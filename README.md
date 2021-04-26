@@ -9,6 +9,5 @@ This project uses SpaceX GraphQL API for getting the satillite data.
 1) Lazy loading
 2) BLoC Pattern
 
-![alt text](https://github.com/aniteshreddy/spacex/blob/main/image1.jpg)
 
-![alt text](https://github.com/aniteshreddy/spacex/blob/main/image2.jpg)
+<img src="https://github.com/aniteshreddy/spacex/blob/main/image1.jpg"  width="200" height="400" Hspace="30" Vspace="10" />  <img src="https://github.com/aniteshreddy/spacex/blob/main/image2.jpg"  width="200" height="400" Hspace="30" Vspace="10" />
