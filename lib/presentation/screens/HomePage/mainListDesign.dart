@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:leanix/DetailsScreens/detailScreenMain.dart';
+import 'package:leanix/constants/constants.dart';
+import 'package:leanix/data/models/launchModel.dart';
+import 'package:leanix/presentation/screens/DetailsScreens/detailScreenMain.dart';
 
 class SpaceListItem extends StatelessWidget {
-  final item;
+ final LaunchData item;
   final animation;
 
   const SpaceListItem({Key key, this.item, this.animation}) : super(key: key);
@@ -16,9 +18,9 @@ class SpaceListItem extends StatelessWidget {
             side: BorderSide(width: 1, color: Colors.white)),
         child: ListTile(
             leading: CircleAvatar(
-              backgroundImage: item["ships"].length != 0
-                  ? item["ships"][0]["image"] != null
-                      ? NetworkImage(item["ships"][0]["image"], scale: 1)
+              backgroundImage: item.ships.length != 0
+                  ? item.ships[0].image != null
+                      ? NetworkImage(item.ships[0].image, scale: 1)
                       : AssetImage("assets/images/spacex.jpg")
                   : AssetImage("assets/images/spacex.jpg"),
               radius: 35.0,
@@ -32,16 +34,13 @@ class SpaceListItem extends StatelessWidget {
               )),
             ),
           contentPadding: EdgeInsets.symmetric(vertical: 6, horizontal: 16),
-          title: Text(item["mission_name"],
+          title: Text(item.missionName,
               style: TextStyle(fontSize: 17, color: Colors.white)),
           
-          subtitle: Text(item["rocket"]["rocket_name"],
+          subtitle: Text(item.rocket.rocketName.toString(),
               style: TextStyle(fontSize: 12, color: Colors.white)),
           onTap: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (BuildContext context) {
-              return DetailScreen(item:item ,);
-            }));
+            Navigator.pushNamed(context,detailScreen  ,arguments: item);
           },
         ));
   }

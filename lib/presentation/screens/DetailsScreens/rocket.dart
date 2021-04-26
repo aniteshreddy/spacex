@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:leanix/components/widgets.dart';
+import 'package:leanix/data/models/launchModel.dart';
+import 'package:leanix/presentation/screens/components/widgets.dart';
 
 class RocketMain extends StatelessWidget {
-  final item;
+  final Rocket item;
 
   const RocketMain({Key key, this.item}) : super(key: key);
   @override
@@ -17,14 +18,15 @@ class RocketMain extends StatelessWidget {
             padding: EdgeInsets.all(8),
             child: Column(children: <Widget>[
               heading("Rocket Details"),
-              cardWidget(item, "Rocket name", "rocket_name"),
-              cardWidget1(item, "Reuse count", "reuse_count"),
-              cardWidget1(item, "Status", "status"),
+              cardWidget(item, "Rocket name"),
+              cardWidget1( "Reuse count", item.firstStage.cores[0].core.reuseCount.toString()),
+              cardWidget1("Status",item.firstStage.cores[0].core.status.toString()),
             ])));
+
   }
 }
 
-Widget cardWidget(final item, String sub, String name) {
+Widget cardWidget(Rocket item, String sub) {
   return Row(
     children: <Widget>[
       Text(
@@ -32,13 +34,12 @@ Widget cardWidget(final item, String sub, String name) {
         style: textstyle,
       ),
       Spacer(),
-      Text(item[name],style: textstyle,)
+      Text(item.rocketName,style: textstyle,)
     ],
   );
 }
 
-Widget cardWidget1(final item, String sub, String name) {
-  print(item[name]);
+Widget cardWidget1( String sub, String name) {
   return Row(
     children: <Widget>[
       Text(
@@ -46,7 +47,7 @@ Widget cardWidget1(final item, String sub, String name) {
         style: textstyle,
       ),
       Spacer(),
-      Text(item["first_stage"]["cores"][0]["core"][name].toString(),style: textstyle,)
+      Text(name,style: textstyle,)
     ],
   );
 }

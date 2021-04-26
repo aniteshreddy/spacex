@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:leanix/components/widgets.dart';
-import 'package:leanix/DetailsScreens/links.dart';
+import 'package:leanix/data/models/launchModel.dart';
+import 'package:leanix/presentation/screens/DetailsScreens/links.dart';
+import 'package:leanix/presentation/screens/components/widgets.dart';
 
 class ShipsMain extends StatelessWidget {
-  final item;
+  final List<Ship> item;
 
   const ShipsMain({Key key, this.item}) : super(key: key);
 
@@ -37,12 +38,12 @@ class ShipsMain extends StatelessWidget {
 }
 
 Widget shipCardList(
-  final item,
+  final Ship item,
 ) {
   return Column(children: <Widget>[
-    shipLayout(item["name"].toString(), "Name"),
-    shipLayout(item["home_port"].toString(), "Home Port"),
-    shipLayout(item["image"].toString(), "Image"),
+    shipLayout(item.name.toString(), "Name"),
+    shipLayout(item.homePort.toString(), "Home Port"),
+    shipLayout(item.image.toString(), "Image"),
     SizedBox(height: 15),
     Divider(color: Colors.white)
   ]);
